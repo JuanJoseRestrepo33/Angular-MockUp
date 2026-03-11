@@ -6,9 +6,9 @@ Interfaz de usuario para **TIMA**, una aplicación de actividad física y retos 
 
 ## Enlaces
 
-| Recurso | URL |
-|---------|-----|
-| **Design System (Figma)** | [https://www.figma.com/design/Q9S1zuZBzFoge33RfSjd96/Design-kit---Design-System---TIMA?node-id=61192-2191&m=dev](https://www.figma.com/design/Q9S1zuZBzFoge33RfSjd96/Design-kit---Design-System---TIMA?node-id=61192-2191&m=dev) |
+| Recurso | Enlace |
+|---------|--------|
+| **Design System** | [Ver Design Kit TIMA en Figma](https://www.figma.com/design/Q9S1zuZBzFoge33RfSjd96/Design-kit---Design-System---TIMA?node-id=61192-2191&m=dev) |
 
 ---
 
