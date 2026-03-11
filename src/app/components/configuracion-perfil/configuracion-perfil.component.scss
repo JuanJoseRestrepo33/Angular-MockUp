@@ -293,6 +293,15 @@
   border: 1px solid #E2E8F0;
   padding: 8px 0;
   z-index: 10;
+  animation: slideDownFade 0.2s ease-out;
+}
+
+.dropdown-chevron {
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown-btn--open .dropdown-chevron {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .custom-dropdown-option {

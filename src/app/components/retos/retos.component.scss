@@ -161,6 +161,11 @@
   color: #4A5568;
   flex-shrink: 0;
   pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.filter-dropdown .custom-dropdown-btn--open .dropdown-chevron {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .custom-dropdown-backdrop {
@@ -182,6 +187,7 @@
   border: 1px solid #E2E8F0;
   padding: 8px 0;
   z-index: 10;
+  animation: slideDownFade 0.2s ease-out;
 }
 
 .custom-dropdown-option {

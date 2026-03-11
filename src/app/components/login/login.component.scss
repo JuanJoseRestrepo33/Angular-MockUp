@@ -13,6 +13,7 @@
   gap: 25px;
   padding: 24px;
   max-width: 469px;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .logo {
@@ -22,19 +23,22 @@
 }
 
 .title {
+  font-family: 'Roboto', sans-serif;
   font-size: 57px;
   font-weight: 500;
   line-height: 64px;
+  letter-spacing: -0.25px;
   color: #091F44;
   text-align: center;
 }
 
 .instruction {
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 24px;
-  letter-spacing: 0.15px;
-  color: #091F44;
+  letter-spacing: 0.5px;
+  color: #364153;
   text-align: center;
 }
 
@@ -44,10 +48,15 @@
   background: white;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
 

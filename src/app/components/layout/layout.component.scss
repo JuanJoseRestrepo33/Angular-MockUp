@@ -34,18 +34,20 @@
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.15px;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
     background: rgba(251, 147, 60, 0.2);
     color: white;
+    transform: translateX(4px);
   }
 
   &.active {
     background: #FB933C;
     color: #091F44;
+    transform: translateX(0);
   }
 }
 

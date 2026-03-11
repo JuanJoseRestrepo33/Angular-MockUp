@@ -270,6 +270,11 @@
   color: #4A5568;
   flex-shrink: 0;
   pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.custom-dropdown-btn--open .dropdown-chevron {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .custom-dropdown-backdrop {
@@ -279,6 +284,7 @@
 }
 
 .custom-dropdown-menu {
+  animation: slideDownFade 0.2s ease-out;
   position: absolute;
   top: 100%;
   left: 0;
@@ -320,7 +326,8 @@
 .checkbox-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .checkbox-item {
@@ -350,6 +357,11 @@
   background: white;
   flex-shrink: 0;
   position: relative;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkbox-item:hover .checkbox-custom {
+  box-shadow: 0 0 0 2px rgba(9, 31, 68, 0.15);
 }
 
 .checkbox-item input:checked + .checkbox-custom {
@@ -366,6 +378,18 @@
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+  animation: checkboxCheck 0.2s ease-out;
+}
+
+@keyframes checkboxCheck {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
 }
 
 .checkbox-label {
