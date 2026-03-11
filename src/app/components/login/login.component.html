@@ -1,0 +1,12 @@
+<div class="login-page">
+  <div class="login-content">
+    <div class="logo">
+      <app-logo variant="light" size="lg"></app-logo>
+    </div>
+    <h1 class="title">Inicio de sesión</h1>
+    <p class="instruction">Inicie sesión escaneando el código QR desde la aplicación móvil</p>
+    <div class="qr-container" (click)="onQrClick()" title="Haz clic para simular escaneo">
+      <img src="assets/images/qr-code.png" alt="Código QR para escanear" class="qr-code" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<svg
+  class="logo"
+  viewBox="0 0 170 50"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="TIMA"
+  [class.logo--sm]="size === 'sm'"
+  [class.logo--md]="size === 'md'"
+  [class.logo--lg]="size === 'lg'"
+>
+  <!-- Círculo azul -->
+  <circle
+    cx="25" cy="25" r="21.5"
+    [attr.stroke]="variant === 'dark' ? '#60A5FA' : '#3B82F6'"
+    stroke-width="2.8"
+    fill="none"
+  />
+  <!-- Checkmark base -->
+  <path
+    d="M12 25 L22 35 L38 14"
+    [attr.stroke]="variant === 'dark' ? '#E2E8F0' : '#091F44'"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Checkmark superior (amarillo) -->
+  <path
+    d="M16 24 L22 30 L36 12"
+    stroke="#FBBF24"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Texto TIMA -->
+  <text
+    x="58" y="34"
+    font-family="Roboto, -apple-system, BlinkMacSystemFont, sans-serif"
+    font-size="26"
+    font-weight="700"
+    letter-spacing="0.5"
+    [attr.fill]="variant === 'light' ? '#091F44' : '#FFFFFF'"
+  >TIMA</text>
+</svg>

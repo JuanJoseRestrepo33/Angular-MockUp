@@ -1,0 +1,16 @@
+<div class="layout">
+  <aside class="sidebar">
+    <a routerLink="/app/panel" class="logo">
+      <app-logo variant="dark" size="sm"></app-logo>
+    </a>
+    <nav class="nav">
+      <a routerLink="/app/panel" routerLinkActive="active" class="nav-item">Panel</a>
+      <a routerLink="/app/retos" routerLinkActive="active" class="nav-item">Retos</a>
+      <a routerLink="/app/analisis" routerLinkActive="active" class="nav-item">Analisis</a>
+      <a routerLink="/app/preferencias" routerLinkActive="active" class="nav-item">Preferencias</a>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

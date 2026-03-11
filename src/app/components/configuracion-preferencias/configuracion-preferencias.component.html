@@ -1,0 +1,137 @@
+<div class="config-pref-page">
+  <header class="config-pref-header">
+    <div class="header-left">
+      <button type="button" class="btn-back" (click)="volver()" aria-label="Volver">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      </button>
+      <h1 class="config-pref-title">Configuración de preferencias</h1>
+    </div>
+  </header>
+  <div class="config-pref-content">
+    <div class="config-pref-card">
+      <div class="config-pref-header-card">Preferencias Configuradas</div>
+      <div class="config-pref-list">
+        <div class="config-pref-row">
+          <div class="config-pref-row-left">
+            <div class="config-pref-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+            </div>
+            <span class="config-pref-label">Tipo de reto</span>
+          </div>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="dropdownTipoOpen"
+              (click)="dropdownTipoOpen = !dropdownTipoOpen"
+            >
+              <span class="dropdown-text">{{ tipoReto }}</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="dropdownTipoOpen" (click)="dropdownTipoOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="dropdownTipoOpen">
+              <button *ngFor="let opt of tipoRetoOpciones" type="button" class="custom-dropdown-option" [class.custom-dropdown-option--active]="tipoReto === opt" (click)="selectTipo(opt)">{{ opt }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="config-pref-row">
+          <div class="config-pref-row-left">
+            <div class="config-pref-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+            </div>
+            <span class="config-pref-label">Periodo de análisis</span>
+          </div>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="dropdownPeriodoOpen"
+              (click)="dropdownPeriodoOpen = !dropdownPeriodoOpen"
+            >
+              <span class="dropdown-text">{{ periodoAnalisis }}</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="dropdownPeriodoOpen" (click)="dropdownPeriodoOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="dropdownPeriodoOpen">
+              <button *ngFor="let opt of periodoOpciones" type="button" class="custom-dropdown-option" [class.custom-dropdown-option--active]="periodoAnalisis === opt" (click)="selectPeriodo(opt)">{{ opt }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="config-pref-row">
+          <div class="config-pref-row-left">
+            <div class="config-pref-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+            </div>
+            <span class="config-pref-label">Ventana de validación</span>
+          </div>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="dropdownVentanaOpen"
+              (click)="dropdownVentanaOpen = !dropdownVentanaOpen"
+            >
+              <span class="dropdown-text">{{ ventanaValidacion }}</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="dropdownVentanaOpen" (click)="dropdownVentanaOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="dropdownVentanaOpen">
+              <button *ngFor="let opt of ventanaOpciones" type="button" class="custom-dropdown-option" [class.custom-dropdown-option--active]="ventanaValidacion === opt" (click)="selectVentana(opt)">{{ opt }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="config-pref-row">
+          <div class="config-pref-row-left">
+            <div class="config-pref-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            </div>
+            <span class="config-pref-label">Visualización</span>
+          </div>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="dropdownVisualizacionOpen"
+              (click)="dropdownVisualizacionOpen = !dropdownVisualizacionOpen"
+            >
+              <span class="dropdown-text">{{ visualizacion }}</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="dropdownVisualizacionOpen" (click)="dropdownVisualizacionOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="dropdownVisualizacionOpen">
+              <button *ngFor="let opt of visualizacionOpciones" type="button" class="custom-dropdown-option" [class.custom-dropdown-option--active]="visualizacion === opt" (click)="selectVisualizacion(opt)">{{ opt }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="config-pref-row">
+          <div class="config-pref-row-left">
+            <div class="config-pref-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <span class="config-pref-label">Sincronización</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" [(ngModel)]="sincronizacion">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="config-pref-row">
+          <div class="config-pref-row-left">
+            <div class="config-pref-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+            </div>
+            <span class="config-pref-label">Notificación Web</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" [(ngModel)]="notificacionWeb">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="config-pref-actions">
+        <button type="button" class="btn-action" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn-action" (click)="guardar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+<div class="config-perfil-page">
+  <header class="config-perfil-header">
+    <div class="header-left">
+      <button type="button" class="btn-back" (click)="volver()" aria-label="Volver">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      </button>
+      <h1 class="config-perfil-title">Configuración de perfil</h1>
+    </div>
+  </header>
+  <div class="config-perfil-content">
+    <div class="config-perfil-card">
+      <div class="config-perfil-header-card">
+        <div class="config-perfil-user-preview">
+          <div class="config-perfil-avatar-wrap">
+            <img class="config-perfil-avatar" src="https://api.dicebear.com/7.x/lorelei/png?seed={{ email }}&backgroundColor=F0F1F3&size=80" alt="{{ nombre }}" />
+          </div>
+          <div class="config-perfil-user-meta">
+            <span class="config-perfil-user-name">{{ nombre }}</span>
+            <span class="config-perfil-user-email">{{ email }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="config-perfil-form">
+        <div class="form-section">
+          <label class="form-label form-label--primary">
+            <span class="form-label-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.96 1.08 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+            </span>
+            Nombre
+          </label>
+          <input
+            type="text"
+            class="form-input"
+            [(ngModel)]="nombre"
+            placeholder="Tu nombre"
+          />
+        </div>
+        <div class="form-section">
+          <label class="form-label form-label--primary">
+            <span class="form-label-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 10H6v-2h12v2zm0-4H6V8l6 3.5L18 8v6z"/></svg>
+            </span>
+            Correo electrónico
+          </label>
+          <input
+            type="email"
+            class="form-input"
+            [(ngModel)]="email"
+            placeholder="tu@email.com"
+          />
+        </div>
+        <div class="form-section">
+          <label class="form-label form-label--primary">
+            <span class="form-label-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            </span>
+            Contraseña
+          </label>
+          <input
+            type="password"
+            class="form-input"
+            [(ngModel)]="password"
+            placeholder="••••••••"
+          />
+        </div>
+        <div class="form-section">
+          <label class="form-label form-label--primary">
+            <span class="form-label-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </span>
+            Idioma
+          </label>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="idiomaDropdownOpen"
+              (click)="idiomaDropdownOpen = !idiomaDropdownOpen"
+            >
+              {{ idioma }}
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="idiomaDropdownOpen" (click)="idiomaDropdownOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="idiomaDropdownOpen">
+              <button
+                *ngFor="let opt of idiomaOpciones"
+                type="button"
+                class="custom-dropdown-option"
+                [class.custom-dropdown-option--active]="idioma === opt"
+                (click)="selectIdioma(opt)"
+              >
+                {{ opt }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <label class="form-label form-label--primary">
+            <span class="form-label-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+            </span>
+            Zona horaria
+          </label>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="zonaHorariaDropdownOpen"
+              (click)="zonaHorariaDropdownOpen = !zonaHorariaDropdownOpen"
+            >
+              {{ zonaHoraria }}
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="zonaHorariaDropdownOpen" (click)="zonaHorariaDropdownOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="zonaHorariaDropdownOpen">
+              <button
+                *ngFor="let opt of zonaHorariaOpciones"
+                type="button"
+                class="custom-dropdown-option"
+                [class.custom-dropdown-option--active]="zonaHoraria === opt"
+                (click)="selectZonaHoraria(opt)"
+              >
+                {{ opt }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="config-perfil-actions">
+        <button type="button" class="btn-action btn-action--cancelar" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn-action btn-action--guardar" (click)="guardar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

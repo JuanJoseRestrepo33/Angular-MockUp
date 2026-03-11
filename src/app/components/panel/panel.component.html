@@ -1,0 +1,77 @@
+<div class="panel-page">
+  <header class="panel-header">
+    <h1 class="panel-title">Panel Principal</h1>
+    <div class="status-bar">
+      <span class="status-dot status-dot--green"></span>
+      <span class="status-text">Sincronizado</span>
+      <a routerLink="/app/perfil" class="avatar" aria-label="Ir a perfil">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </a>
+    </div>
+  </header>
+  <div class="panel-content">
+    <div class="cards-row">
+      <div class="card stat-card">
+        <h3 class="card-title">Constancia semanal</h3>
+        <div class="week-blocks">
+          <div class="block filled"></div>
+          <div class="block filled"></div>
+          <div class="block filled"></div>
+          <div class="block filled"></div>
+          <div class="block empty"></div>
+          <div class="block empty"></div>
+          <div class="block empty"></div>
+        </div>
+        <p class="week-text">4 de 7 días cumplidos</p>
+      </div>
+      <div class="card stat-card">
+        <h3 class="card-title">Retos completados hoy</h3>
+        <div class="stat-content">
+          <span class="star-icon">★</span>
+          <span class="stat-value">{{ challengesCompletedToday }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="action-cards">
+      <div class="card action-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+          </div>
+          <h3 class="card-title">Retos</h3>
+        </div>
+        <p class="card-desc">Tienes {{ activeChallenges }} retos activos</p>
+        <button class="btn-primary" routerLink="/app/retos">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          ver y editar retos
+        </button>
+      </div>
+      <div class="card action-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+          </div>
+          <h3 class="card-title">Análisis</h3>
+        </div>
+        <p class="card-desc">Ver análisis semanal</p>
+        <button class="btn-primary" routerLink="/app/analisis">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          Ver análisis
+        </button>
+      </div>
+      <div class="card action-card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          </div>
+          <h3 class="card-title">Preferencias</h3>
+        </div>
+        <p class="card-desc">Editar preferencias</p>
+        <button class="btn-primary" routerLink="/app/preferencias">
+          <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          Editar preferencias
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

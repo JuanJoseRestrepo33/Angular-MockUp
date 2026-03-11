@@ -1,0 +1,122 @@
+<div class="retos-page">
+  <header class="retos-header">
+    <h1 class="retos-title">Retos</h1>
+    <div class="status-bar">
+      <span class="status-dot status-dot--green"></span>
+      <span class="status-text">Sincronizado</span>
+      <a routerLink="/app/perfil" class="avatar" aria-label="Ir a perfil">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </a>
+    </div>
+  </header>
+  <div class="retos-content">
+    <p class="retos-subtitle">Define y gestiona los retos de activación física.</p>
+    <div class="toolbar">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Buscar reto..."
+        [(ngModel)]="searchQuery"
+      />
+      <div class="filter-wrapper">
+        <button
+          class="btn-outlined"
+          [class.btn-outlined--active]="filterOpen"
+          (click)="toggleFilter()"
+        >
+          {{ filtroBtnLabel }}
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="filter-backdrop" *ngIf="filterOpen" (click)="closeFilter()"></div>
+        <div class="filter-dropdown-content" *ngIf="filterOpen">
+          <button
+            *ngFor="let f of filtros"
+            class="filter-option"
+            [class.filter-option--active]="filtroActivo === f.key"
+            (click)="selectFiltro(f.key)"
+          >
+            {{ f.label }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="retos-table">
+        <colgroup>
+          <col style="width: 25%" />
+          <col style="width: 12%" />
+          <col style="width: 15%" />
+          <col style="width: 15%" />
+          <col style="width: 15%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Nivel</th>
+            <th>Estado</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reto of retosPaginated">
+            <td>{{ reto.nombre }}</td>
+            <td>{{ reto.tipo }}</td>
+            <td>{{ reto.nivel }}</td>
+            <td class="td-estado">
+              <div class="td-center">
+                <label class="toggle">
+                  <input
+                    type="checkbox"
+                    [checked]="reto.activo"
+                    (change)="reto.activo = $any($event.target).checked"
+                  >
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </td>
+            <td class="td-accion">
+              <div class="td-center">
+                <button class="btn-editar" routerLink="/app/retos/configuracion">Editar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-row">
+      <span class="pagination-info">
+        Mostrando {{ paginationStart }}-{{ paginationEnd }} de {{ totalRetos }} retos
+      </span>
+      <div class="pagination-controls">
+        <button
+          class="pagination-arrow"
+          [class.pagination-arrow--disabled]="currentPage <= 1"
+          [attr.aria-label]="'Anterior'"
+          (click)="prevPage()"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button
+          *ngFor="let p of pageNumbers"
+          class="pagination-page"
+          [class.pagination-page--current]="p === currentPage"
+          (click)="goToPage(p)"
+        >
+          {{ p }}
+        </button>
+        <button
+          class="pagination-arrow"
+          [class.pagination-arrow--disabled]="currentPage >= totalPages"
+          [attr.aria-label]="'Siguiente'"
+          (click)="nextPage()"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="create-row">
+      <button class="btn-crear" routerLink="/app/retos/configuracion">Crear</button>
+    </div>
+  </div>
+</div>
