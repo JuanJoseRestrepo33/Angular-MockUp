@@ -2,13 +2,21 @@
 
 Aplicación web desarrollada con Angular 15 que implementa las interfaces del Design System TIMA.
 
+## Repositorio
+
+**Dirección de acceso:** https://github.com/JuanJoseRestrepo33/Angular-MockUp
+
 ## Pantallas
 
 - **Login** (`/login`): Inicio de sesión con código QR. Al hacer clic en el QR se simula el escaneo y se navega al Panel Principal.
 - **Panel Principal** (`/app/panel`): Dashboard con retos completados, constancia semanal y acceso a las demás secciones.
 - **Retos** (`/app/retos`): Vista de retos activos.
-- **Análisis** (`/app/analisis`): Vista de análisis semanal.
+- **Análisis** (`/app/analisis`): Vista de análisis semanal con selector de período (7/14/30 días).
 - **Preferencias** (`/app/preferencias`): Configuración con componentes interactivos (toggles, dropdown).
+- **Perfil** (`/app/perfil`): Datos del usuario y acceso a configuración de perfil.
+- **Configuración Perfil** (`/app/perfil/configuracion`): Idioma, zona horaria (dropdowns interactivos).
+- **Configuración Retos** (`/app/retos/configuracion`): Ventana de validación (dropdown).
+- **Configuración Preferencias** (`/app/preferencias/configuracion`): Toggles y dropdowns interactivos.
 
 ## Requisitos de ejecución
 
