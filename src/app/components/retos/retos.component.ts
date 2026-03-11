@@ -1,11 +1,6 @@
-import { Component } from '@angular/core';
-
-export interface Reto {
-  nombre: string;
-  tipo: string;
-  nivel: string;
-  activo: boolean;
-}
+import { Component, OnInit } from '@angular/core';
+import { Reto } from '../../models';
+import { RetosService } from '../../services/retos.service';
 
 type FiltroTipo = 'nombre' | 'tipo' | 'nivel' | null;
 
@@ -14,7 +9,7 @@ type FiltroTipo = 'nombre' | 'tipo' | 'nivel' | null;
   templateUrl: './retos.component.html',
   styleUrls: ['./retos.component.scss']
 })
-export class RetosComponent {
+export class RetosComponent implements OnInit {
   searchQuery = '';
   filterOpen = false;
   filtroActivo: FiltroTipo = null;
@@ -27,15 +22,13 @@ export class RetosComponent {
     { key: 'nivel', label: 'Nivel' }
   ];
 
-  allRetos: Reto[] = [
-    { nombre: 'Rutina de ejercicios', tipo: 'Basico', nivel: 'Avanzado', activo: true },
-    { nombre: 'Caminata diaria', tipo: 'Intermedio', nivel: 'Principiante', activo: true },
-    { nombre: 'Yoga matutino', tipo: 'Basico', nivel: 'Intermedio', activo: false },
-    { nombre: 'Crossfit', tipo: 'Avanzado', nivel: 'Avanzado', activo: true },
-    { nombre: 'Estiramientos', tipo: 'Basico', nivel: 'Principiante', activo: true },
-    { nombre: 'Running 5K', tipo: 'Intermedio', nivel: 'Avanzado', activo: true },
-    { nombre: 'Natación', tipo: 'Avanzado', nivel: 'Intermedio', activo: false }
-  ];
+  allRetos: Reto[] = [];
+
+  constructor(private retosService: RetosService) {}
+
+  ngOnInit(): void {
+    this.allRetos = this.retosService.getRetos();
+  }
 
   get retosFiltrados(): Reto[] {
     let retos = [...this.allRetos];

@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Preferencias } from '../../models';
+import { PreferenciasService } from '../../services/preferencias.service';
 
 @Component({
   selector: 'app-configuracion-preferencias',
   templateUrl: './configuracion-preferencias.component.html',
   styleUrls: ['./configuracion-preferencias.component.scss']
 })
-export class ConfiguracionPreferenciasComponent {
+export class ConfiguracionPreferenciasComponent implements OnInit {
   tipoReto = 'Pasos';
   periodoAnalisis = 'Semanal';
   ventanaValidacion = '5 minutos';
@@ -23,7 +25,20 @@ export class ConfiguracionPreferenciasComponent {
   ventanaOpciones = ['5 minutos', '10 minutos', '15 minutos', '30 minutos', '1 hora'];
   visualizacionOpciones = ['Simple', 'Detallada'];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private preferenciasService: PreferenciasService
+  ) {}
+
+  ngOnInit(): void {
+    const prefs = this.preferenciasService.getPreferencias();
+    this.tipoReto = prefs.tipoReto;
+    this.periodoAnalisis = prefs.periodoAnalisis;
+    this.ventanaValidacion = prefs.ventanaValidacion;
+    this.visualizacion = prefs.visualizacion;
+    this.sincronizacion = prefs.sincronizacion;
+    this.notificacionWeb = prefs.notificacionWeb;
+  }
 
   selectTipo(opt: string): void {
     this.tipoReto = opt;

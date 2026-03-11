@@ -17,10 +17,8 @@
           <p class="chart-subtitle">Retos completados</p>
         </div>
         <div class="period-select">
-          <select class="period-dropdown" [(ngModel)]="selectedPeriod">
-            <option value="7">Últimos 7 días</option>
-            <option value="14">Últimos 14 días</option>
-            <option value="30">Últimos 30 días</option>
+          <select class="period-dropdown" [(ngModel)]="selectedPeriod" (ngModelChange)="onPeriodoChange()">
+            <option *ngFor="let p of periodosOpciones" [value]="p.valor">{{ p.etiqueta }}</option>
           </select>
         </div>
       </div>

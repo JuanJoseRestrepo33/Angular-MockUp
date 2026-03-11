@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../../models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-configuracion-perfil',
   templateUrl: './configuracion-perfil.component.html',
   styleUrls: ['./configuracion-perfil.component.scss']
 })
-export class ConfiguracionPerfilComponent {
-  nombre = 'Tomás Álvarez';
-  email = 'tomas.alvarez@email.com';
+export class ConfiguracionPerfilComponent implements OnInit {
+  nombre = '';
+  email = '';
   password = '';
-  idioma = 'Español';
-  zonaHoraria = '(GMT-5) Colombia';
+  idioma = '';
+  zonaHoraria = '';
 
   idiomaDropdownOpen = false;
   zonaHorariaDropdownOpen = false;
@@ -19,7 +21,18 @@ export class ConfiguracionPerfilComponent {
   idiomaOpciones = ['Español', 'English', 'Português', 'Français'];
   zonaHorariaOpciones = ['(GMT-5) Colombia', '(GMT-6) México', '(GMT-3) Argentina', '(GMT+1) España'];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private usuarioService: UsuarioService
+  ) {}
+
+  ngOnInit(): void {
+    const u = this.usuarioService.getUsuario();
+    this.nombre = u.name;
+    this.email = u.email;
+    this.idioma = u.language;
+    this.zonaHoraria = u.timezone;
+  }
 
   volver(): void {
     this.router.navigate(['/app/perfil']);

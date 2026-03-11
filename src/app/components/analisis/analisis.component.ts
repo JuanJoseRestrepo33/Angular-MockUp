@@ -1,14 +1,17 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Chart from 'chart.js/auto';
+import { PERIODOS_ANALISIS } from '../../models';
 
 @Component({
   selector: 'app-analisis',
   templateUrl: './analisis.component.html',
   styleUrls: ['./analisis.component.scss']
 })
-export class AnalisisComponent implements AfterViewInit, OnDestroy {
+export class AnalisisComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
+  periodosOpciones = PERIODOS_ANALISIS;
   selectedPeriod = '7';
   weekLabels = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   chartData = [1, 2, 4, 2, 5, 2, 1, 0];
@@ -16,7 +19,28 @@ export class AnalisisComponent implements AfterViewInit, OnDestroy {
   promedioPorDia = 3;
   private chart: Chart | null = null;
 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    const periodo = this.route.snapshot.queryParams['periodo'];
+    if (periodo && ['7', '14', '30'].includes(periodo)) {
+      this.selectedPeriod = periodo;
+    }
+  }
+
   ngAfterViewInit(): void {
+    this.initChart();
+  }
+
+  onPeriodoChange(): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { periodo: this.selectedPeriod },
+      queryParamsHandling: 'merge'
+    });
     this.initChart();
   }
 
