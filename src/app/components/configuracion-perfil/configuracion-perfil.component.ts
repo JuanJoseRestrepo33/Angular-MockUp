@@ -14,6 +14,7 @@ export class ConfiguracionPerfilComponent implements OnInit {
   password = '';
   idioma = '';
   zonaHoraria = '';
+  showPassword = false;
 
   idiomaDropdownOpen = false;
   zonaHorariaDropdownOpen = false;
