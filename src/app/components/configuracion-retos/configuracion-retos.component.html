@@ -92,17 +92,23 @@
           </span>
           Nivel de exigencia
         </label>
-        <div class="checkbox-group">
-          <label class="checkbox-item">
-            <input type="radio" name="nivelExigencia" [checked]="nivelExigencia === 'estricto'" (change)="nivelExigencia = 'estricto'">
-            <span class="checkbox-custom"></span>
-            <span class="checkbox-label">Estricto</span>
-          </label>
-          <label class="checkbox-item">
-            <input type="radio" name="nivelExigencia" [checked]="nivelExigencia === 'flexible'" (change)="nivelExigencia = 'flexible'">
-            <span class="checkbox-custom"></span>
-            <span class="checkbox-label">Flexible</span>
-          </label>
+        <div class="tipo-buttons">
+          <button
+            type="button"
+            class="tipo-btn"
+            [class.tipo-btn--active]="nivelExigencia === 'estricto'"
+            (click)="nivelExigencia = 'estricto'"
+          >
+            Estricto
+          </button>
+          <button
+            type="button"
+            class="tipo-btn"
+            [class.tipo-btn--active]="nivelExigencia === 'flexible'"
+            (click)="nivelExigencia = 'flexible'"
+          >
+            Flexible
+          </button>
         </div>
       </div>
 

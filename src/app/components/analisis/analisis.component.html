@@ -17,9 +17,29 @@
           <p class="chart-subtitle">Retos completados</p>
         </div>
         <div class="period-select">
-          <select class="period-dropdown" [(ngModel)]="selectedPeriod" (ngModelChange)="onPeriodoChange()">
-            <option *ngFor="let p of periodosOpciones" [value]="p.valor">{{ p.etiqueta }}</option>
-          </select>
+          <div class="custom-dropdown">
+            <button
+              type="button"
+              class="custom-dropdown-btn"
+              [class.custom-dropdown-btn--open]="periodDropdownOpen"
+              (click)="periodDropdownOpen = !periodDropdownOpen"
+            >
+              {{ periodLabel }}
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="custom-dropdown-backdrop" *ngIf="periodDropdownOpen" (click)="periodDropdownOpen = false"></div>
+            <div class="custom-dropdown-menu" *ngIf="periodDropdownOpen">
+              <button
+                *ngFor="let p of periodosOpciones"
+                type="button"
+                class="custom-dropdown-option"
+                [class.custom-dropdown-option--active]="selectedPeriod === p.valor"
+                (click)="selectPeriodo(p.valor); periodDropdownOpen = false"
+              >
+                {{ p.etiqueta }}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="chart-wrapper">

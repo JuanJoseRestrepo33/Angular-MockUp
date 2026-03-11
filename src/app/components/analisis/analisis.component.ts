@@ -13,6 +13,7 @@ export class AnalisisComponent implements OnInit, AfterViewInit, OnDestroy {
 
   periodosOpciones = PERIODOS_ANALISIS;
   selectedPeriod = '7';
+  periodDropdownOpen = false;
   weekLabels = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   chartData = [1, 2, 4, 2, 5, 2, 1, 0];
   retosFinalizados = 12;
@@ -35,13 +36,19 @@ export class AnalisisComponent implements OnInit, AfterViewInit, OnDestroy {
     this.initChart();
   }
 
-  onPeriodoChange(): void {
+  selectPeriodo(valor: string): void {
+    this.selectedPeriod = valor;
+    this.periodDropdownOpen = false;
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { periodo: this.selectedPeriod },
       queryParamsHandling: 'merge'
     });
     this.initChart();
+  }
+
+  get periodLabel(): string {
+    return this.periodosOpciones.find(p => p.valor === this.selectedPeriod)?.etiqueta ?? 'Últimos 7 días';
   }
 
   ngOnDestroy(): void {

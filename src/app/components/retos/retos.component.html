@@ -18,21 +18,23 @@
         placeholder="Buscar reto..."
         [(ngModel)]="searchQuery"
       />
-      <div class="filter-wrapper">
+      <div class="filter-dropdown">
         <button
-          class="btn-outlined"
-          [class.btn-outlined--active]="filterOpen"
+          type="button"
+          class="custom-dropdown-btn"
+          [class.custom-dropdown-btn--open]="filterOpen"
           (click)="toggleFilter()"
         >
           {{ filtroBtnLabel }}
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
         </button>
-        <div class="filter-backdrop" *ngIf="filterOpen" (click)="closeFilter()"></div>
-        <div class="filter-dropdown-content" *ngIf="filterOpen">
+        <div class="custom-dropdown-backdrop" *ngIf="filterOpen" (click)="closeFilter()"></div>
+        <div class="custom-dropdown-menu" *ngIf="filterOpen">
           <button
             *ngFor="let f of filtros"
-            class="filter-option"
-            [class.filter-option--active]="filtroActivo === f.key"
+            type="button"
+            class="custom-dropdown-option"
+            [class.custom-dropdown-option--active]="filtroActivo === f.key"
             (click)="selectFiltro(f.key)"
           >
             {{ f.label }}
