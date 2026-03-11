@@ -1,57 +1,88 @@
-# TIMA - Aplicación Web Frontend
+# TIMA — Aplicación Web Frontend
 
-Aplicación web desarrollada con Angular 15 que implementa las interfaces del Design System TIMA.
+---
 
-## Repositorio
+## Pantallas incluidas
 
-**Dirección de acceso:** https://github.com/JuanJoseRestrepo33/Angular-MockUp
+| Ruta | Descripción |
+|------|-------------|
+| `/login` | Inicio de sesión con código QR clicable |
+| `/app/panel` | Dashboard: retos completados, constancia semanal, acceso a módulos |
+| `/app/retos` | Lista de retos con filtros, paginación y toggles de estado |
+| `/app/analisis` | Gráfica de constancia con selector de período (7/14/30 días) |
+| `/app/preferencias` | Configuración con toggles y dropdowns |
+| `/app/perfil` | Datos del usuario y enlace a configuración |
+| `/app/perfil/configuracion` | Idioma, zona horaria (dropdowns) |
+| `/app/retos/configuracion` | Tipo de reto, ventana de validación, nivel de exigencia |
+| `/app/preferencias/configuracion` | Tipo de reto, período, ventana, visualización, toggles |
 
-## Pantallas
+---
 
-- **Login** (`/login`): Inicio de sesión con código QR. Al hacer clic en el QR se simula el escaneo y se navega al Panel Principal.
-- **Panel Principal** (`/app/panel`): Dashboard con retos completados, constancia semanal y acceso a las demás secciones.
-- **Retos** (`/app/retos`): Vista de retos activos.
-- **Análisis** (`/app/analisis`): Vista de análisis semanal con selector de período (7/14/30 días).
-- **Preferencias** (`/app/preferencias`): Configuración con componentes interactivos (toggles, dropdown).
-- **Perfil** (`/app/perfil`): Datos del usuario y acceso a configuración de perfil.
-- **Configuración Perfil** (`/app/perfil/configuracion`): Idioma, zona horaria (dropdowns interactivos).
-- **Configuración Retos** (`/app/retos/configuracion`): Ventana de validación (dropdown).
-- **Configuración Preferencias** (`/app/preferencias/configuracion`): Toggles y dropdowns interactivos.
+## Stack técnico
 
-## Requisitos de ejecución
+- **Framework:** Angular 15
+- **Estilos:** SCSS con partials (`_colors.scss`, `_variables.scss`)
+- **Gráficas:** Chart.js
+- **Rutas:** Angular Router con parámetros de consulta
+- **Modelos:** Interfaces TypeScript para Reto, Usuario, Preferencias, Periodo
+- **Servicios:** RetosService, PreferenciasService, UsuarioService
 
-- Node.js 18+
-- npm 9+
-
-## Instalación
-
-```bash
-npm install
-```
-
-## Desarrollo
-
-```bash
-npm run start
-```
-
-Abre [http://localhost:4200](http://localhost:4200). La ruta por defecto es `/login`.
-
-## Compilación para producción
-
-```bash
-npm run build
-```
-
-Los archivos se generan en `dist/angular-proyecto/`.
-
-## Navegación
-
-- El QR en Login es clickeable y navega al Panel Principal.
-- La barra lateral permite navegar entre Panel, Retos, Análisis y Preferencias.
-- Los botones de las tarjetas redirigen a sus respectivas secciones.
+---
 
 ## Componentes interactivos (no funcionales)
 
-- **Toggles** en Preferencias: responden al clic (cambian estado visual).
-- **Dropdown** en Preferencias: abre/cierra y permite selección visual de opciones.
+Todos los controles reaccionan al clic y cambian de estado visual, pero no persisten datos ni llaman a APIs:
+
+- **Dropdowns:** Filtro (Retos), Período (Análisis), Idioma, Zona horaria, Ventana de validación, Tipo de reto, etc.
+- **Toggles:** Sincronización, notificaciones web, estado activo/inactivo de retos
+- **Botones tipo toggle:** Tipo de reto (Pasos/Ejercicios), Nivel de exigencia (Estricto/Flexible)
+
+---
+
+## Inicio rápido
+
+**Requisitos:** Node.js 18+ | npm 9+
+
+```bash
+# Clonar
+git clone https://github.com/JuanJoseRestrepo33/Angular-MockUp.git
+cd Angular-MockUp
+
+# Instalar
+npm install
+
+# Desarrollo (http://localhost:4200)
+npm run start
+
+# Compilación
+npm run build
+```
+
+Por defecto se abre en `/login`. El código QR es clicable y navega al panel principal.
+
+---
+
+## Estructura del proyecto
+
+```
+src/
+├── app/
+│   ├── components/       # Login, Panel, Retos, Análisis, Preferencias, Perfil, Configs
+│   ├── models/           # Interfaces: Reto, Usuario, Preferencias, PeriodoAnalisis
+│   └── services/         # RetosService, PreferenciasService, UsuarioService
+├── styles/
+│   ├── _colors.scss      # Paleta TIMA
+│   └── _variables.scss  # Tipografía, espaciado, transiciones
+└── styles.scss           # Estilos globales
+```
+
+---
+
+## Navegación
+
+- **Login** → Clic en QR → Panel principal
+- **Sidebar** → Panel | Retos | Análisis | Preferencias
+- **Tarjetas del panel** → Redirección a Retos, Análisis, Preferencias
+- **Avatar** → Perfil
+- **Editar / Crear** → Pantallas de configuración
+
