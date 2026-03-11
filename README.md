@@ -1,5 +1,15 @@
 # TIMA — Aplicación Web Frontend
 
+Interfaz de usuario para **TIMA**, una aplicación de actividad física y retos personales. Desarrollada con Angular 15 siguiendo el Design System TIMA.
+
+---
+
+## Enlaces
+
+| Recurso | URL |
+|---------|-----|
+| **Design System (Figma)** | [https://www.figma.com/design/Q9S1zuZBzFoge33RfSjd96/Design-kit---Design-System---TIMA?node-id=61192-2191&m=dev](https://www.figma.com/design/Q9S1zuZBzFoge33RfSjd96/Design-kit---Design-System---TIMA?node-id=61192-2191&m=dev) |
+
 ---
 
 ## Pantallas incluidas
